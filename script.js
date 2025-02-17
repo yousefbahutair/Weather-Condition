@@ -1,11 +1,11 @@
 async function getWeather() {
-    const city= document.querySelector("#city");
+    const city = document.querySelector("#city").value.trim();
     if(!city){
         alert("Please Enter a country");
         return;
     }
-    const apiKey = "//";
-    const url    = `//`;
+    const apiKey = "86b04950c3739201367738765df1ee2e";
+    const url    = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=ar`;
     try{
         const response = await fetch(url);
         if(!response.ok) {
@@ -18,5 +18,5 @@ async function getWeather() {
         <p> Humidity  : ${data.main.humidity}% </p>
         <p> Wind      : ${data.wind.speed}m/s </p>`; }
         catch(error) {
-            document.querySelector("weather").innerHTML = `<p style="color: red;">${error.message}</p>`;
+            document.querySelector("#weather").innerHTML = `<p style="color: red;">${error.message}</p>`;
         }}
